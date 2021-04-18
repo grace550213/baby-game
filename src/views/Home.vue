@@ -1,7 +1,8 @@
 <template>
   <div class="Home-wrap">
     <div class="shapeWrap" :style="shapPosition" @click="changeShape">
-      <div :id="shapes[index]" class="shape"></div>
+      <div v-if="index < 18" :id="showImg[index]" class="shape"></div>
+      <div v-else :id="showImg[index]" class="shape fruit"></div>
     </div>
   </div>
 </template>
@@ -12,7 +13,8 @@ export default {
   components: {},
   data() {
     return {
-      shapes: [
+      showImg: [
+        // 下面為形狀(18)
         'square',
         'rectangle',
         'circle',
@@ -30,7 +32,29 @@ export default {
         'diamond',
         'pacman',
         'moon',
-        'cross'
+        'cross',
+        // 下面為水果圖片
+        'apple',
+        'banana',
+        'blackberry',
+        'carambola',
+        'cherry',
+        'chicken',
+        'dragonFruit',
+        'grapefruit',
+        'grapes',
+        'guava',
+        'kiwi',
+        'lemon',
+        'litchi',
+        'mango',
+        'orange',
+        'papaya',
+        'peach',
+        'pear',
+        'pineapple',
+        'strawberry',
+        'watermelon'
       ],
       color: [
         'AntiqueWhite',
@@ -66,22 +90,23 @@ export default {
     changeShape() {
       const root = document.documentElement;
       root.style.setProperty('--primary', `${this.color[this.getRandomInt(19)]}`);
-      this.index = this.getRandomInt(18);
-      this.shapPosition = `top:${this.getRandomInt(70)}vh;left:${this.getRandomInt(60)}vw`;
+      this.index = this.getRandomInt(39);
+      this.shapPosition = `top:${this.getRandomInt(70)}vh;left:${this.getRandomInt(55)}vw`;
     }
   }
 };
 </script>
 <style scoped lang="scss">
 @import url('~@/assets/styles/shapes.css');
+@import url('~@/assets/styles/fruits.css');
 .shapeWrap {
   padding: 20px;
   position: absolute;
 }
 .shape {
-  animation: box 0.8s infinite;
+  animation: jumping 0.8s infinite;
 }
-@keyframes box {
+@keyframes jumping {
   0% {
     margin-top: 20px;
   }
@@ -95,5 +120,12 @@ export default {
   100% {
     margin-top: 20px;
   }
+}
+.fruit {
+  width: 200px;
+  height: 150px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 </style>
