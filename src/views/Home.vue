@@ -1,8 +1,12 @@
 <template>
   <div class="Home-wrap">
     <div class="shapeWrap" :style="shapPosition" @click="changeShape">
+      <!-- 形狀 -->
       <div v-if="index < 18" :id="showImg[index]" class="shape"></div>
-      <div v-else :id="showImg[index]" class="shape fruit"></div>
+      <!-- 水果圖片 -->
+      <div v-else-if="index >= 18 && index < 39" :class="showImg[index]" class="shape"></div>
+      <!-- 數字 -->
+      <div v-else :class="showImg[index]" class="shape number">{{ showImg[index] }}</div>
     </div>
   </div>
 </template>
@@ -33,7 +37,7 @@ export default {
         'pacman',
         'moon',
         'cross',
-        // 下面為水果圖片
+        // 下面為水果圖片(39)
         'apple',
         'banana',
         'blackberry',
@@ -54,8 +58,21 @@ export default {
         'pear',
         'pineapple',
         'strawberry',
-        'watermelon'
+        'watermelon',
+        // 下面為數字(50)
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
       ],
+      // 形狀顏色
       color: [
         'AntiqueWhite',
         'Aquamarine',
@@ -77,21 +94,25 @@ export default {
         'black',
         'gray'
       ],
+      // 顯示第幾個
       index: 0,
+      // 位置
       shapPosition: 'top:0;left:0'
     };
   },
   computed: {},
   created() {},
   methods: {
+    // 隨機數字
     getRandomInt(max) {
       return Math.floor(Math.random() * max);
     },
+    // 按下圖片，變換位置與顯示圖片
     changeShape() {
       const root = document.documentElement;
       root.style.setProperty('--primary', `${this.color[this.getRandomInt(19)]}`);
-      this.index = this.getRandomInt(39);
-      this.shapPosition = `top:${this.getRandomInt(70)}vh;left:${this.getRandomInt(55)}vw`;
+      this.index = this.getRandomInt(50);
+      this.shapPosition = `top:${this.getRandomInt(60)}vh;left:${this.getRandomInt(40)}vw`;
     }
   }
 };
@@ -121,11 +142,14 @@ export default {
     margin-top: 20px;
   }
 }
-.fruit {
-  width: 200px;
-  height: 150px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
+// .fruit {
+// background-position: center;
+// background-repeat: no-repeat;
+// background-size: contain;
+// }
+.number {
+  font-size: 100px;
+  font-weight: bold;
+  color: var(--primary);
 }
 </style>
