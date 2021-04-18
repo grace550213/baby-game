@@ -1,0 +1,79 @@
+// 以下皆為 此專案 使用之顏色
+// primary
+$chefPrimary: rgb(24,49,83);
+// secondary
+// $chefSecondary: #6aa62e;
+
+$chefOrange: #ffb606;
+$chefLightOrange:#f3da9d;
+
+// 白色
+$chefWhite: #ffffff;
+$chefLightWhite: rgba(255, 255, 255, 0.75);
+
+$chefGray7E: #7e7e7e;
+$chefBackground: #fafafa;
+
+// 單行多字 ...
+.overflow-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// 兩行多字 ...
+.overflow-ellipsis-2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+// 三行多字 ...
+.overflow-ellipsis-3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+// 四行多字 ...
+.overflow-ellipsis-4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+// 已下為排版用 class
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.column {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.items-center {
+  align-items: center;
+}
+.items-start {
+  align-items: flex-start;
+}
+.items-end {
+  align-items: flex-end;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-around {
+  justify-content: space-around;
+}
